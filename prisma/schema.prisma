@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model hotel_performance {
+  id                   Int      @id @default(autoincrement())
+  hotels_by_5star      Int?
+  rooms_by_5star       Int?
+  rooms_by_1_3star     Int?
+  hotels_by_1_3star    Int?
+  room_occupancy       Decimal? @db.Decimal(5, 2)
+  hotels               Int?
+  adr                  Decimal? @db.Decimal(10, 2)
+  revpar               Decimal? @db.Decimal(10, 2)
+  rooms_by_4star       Int?
+  hotels_by_4star      Int?
+  rooms_available      Int?
+  rooms_by_deluxe      Int?
+  hotels_by_standard   Int?
+  hotels_by_deluxe     Int?
+  length_of_stay       Decimal? @db.Decimal(5, 2)
+  rooms_by_standard    Int?
+  occupied_room_nights BigInt?
+  report_date          DateTime @db.Date
+}
